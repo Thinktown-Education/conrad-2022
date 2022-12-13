@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: conrad_nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./build:/app
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
