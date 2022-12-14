@@ -2,9 +2,9 @@
 
 该项目已经进行前后端分离，请前往对应的目录查看使用方式。
 
-# Web design
+# Design doc
 
-## 接口
+## API
 ### Sign in
 1. 登录 [login]（第三方接口）
 2. 注册 [register]
@@ -16,7 +16,7 @@
 4. 上传 [uploadMap]（callback）
 5. map改名 [renameMap]
 
-## 数据库
+## Database
 - user
   - id
   - email
