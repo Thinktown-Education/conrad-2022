@@ -1,6 +1,12 @@
 spring:
   main:
     web-application-type: servlet
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/conrad2022
+    username: root
+    password: admin
+
 
 server:
   port: 8080
