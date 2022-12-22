@@ -20,14 +20,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public User login(String email, String password) {
         User user = userRepository.findByEmail(email);
-        if (user.getPassword().equals(password)) {
-            return user;
+        // No such email
+        if (user == null) {
+            return null;
         }
-        return null;
+
+        // Password incorrect
+        if (!user.getPassword().equals(password)) {
+            return null;
+        }
+
+        return user;
     }
 
     @Override
     public User register(String email, String password) {
-        return null;
+        User user = new User(email, password);
+        User registered = userRepository.save(user);
+        return registered;
     }
 }
