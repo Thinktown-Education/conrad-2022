@@ -1,6 +1,6 @@
 package com.thinktown.conrad2022.dao;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,12 +10,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class User {
     @Id
+    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "email")
     @Getter
     @Setter
+    @Column(name = "email")
     private String email;
 
     @Getter

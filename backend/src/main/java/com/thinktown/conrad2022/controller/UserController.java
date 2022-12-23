@@ -3,6 +3,7 @@ package com.thinktown.conrad2022.controller;
 import com.thinktown.conrad2022.dao.User;
 import com.thinktown.conrad2022.service.UserService;
 import com.thinktown.conrad2022.utils.MD5;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ public class UserController {
     @Autowired
     public UserService userService;
 
+    @ApiOperation(value = "Register", notes = "Submit email and password to register")
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody User body) throws Exception {
         String email = body.getEmail();
@@ -29,6 +31,7 @@ public class UserController {
         return ResponseEntity.ok(user.getEmail());
     }
 
+    @ApiOperation(value = "Login", notes = "Submit email and password to log in")
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User body) throws Exception {
         String email = body.getEmail();
