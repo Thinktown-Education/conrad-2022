@@ -11,6 +11,10 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * Swagger 2 自动生成文档
+ * http://localhost:8080/swagger-ui/
+ */
 @Configuration
 @EnableSwagger2
 public class Swagger2Config {
@@ -19,7 +23,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(this.apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.thinktown.conrad2022.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.thinktown.conrad2022.api"))
                 .paths(PathSelectors.any())
                 .build();
     }

@@ -1,5 +1,6 @@
-package com.thinktown.conrad2022.controller;
+package com.thinktown.conrad2022.api;
 
+import com.thinktown.conrad2022.auth.GlobalUsercontext;
 import com.thinktown.conrad2022.dao.Mindmap;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
@@ -19,5 +20,11 @@ public class MindmapController {
     public ResponseEntity<List<Mindmap>> getList() {
         List<Mindmap> mindmaps = new ArrayList<>();
         return ResponseEntity.ok(mindmaps);
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<String> test() {
+        int id = GlobalUsercontext.getUserId();
+        return ResponseEntity.ok("User id: "  + id);
     }
 }

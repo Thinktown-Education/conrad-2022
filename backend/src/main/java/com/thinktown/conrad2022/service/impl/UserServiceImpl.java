@@ -4,10 +4,17 @@ import com.thinktown.conrad2022.dao.User;
 import com.thinktown.conrad2022.repository.UserRepository;
 import com.thinktown.conrad2022.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
@@ -38,5 +45,16 @@ public class UserServiceImpl implements UserService {
         User user = new User(email, password);
         User registered = userRepository.save(user);
         return registered;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(s);
+        if (user == null) {
+            throw new UsernameNotFoundException(s);
+        }
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("user"));
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
 }
