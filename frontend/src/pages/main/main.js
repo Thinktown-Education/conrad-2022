@@ -1,7 +1,8 @@
-import {Component} from 'react';
+import { Component } from 'react';
 import './main.css';
 import logo from 'assets/img/logo.svg';
 import { AxiosInstance } from '../../util/axios-api';
+import Login from '../../components/login/login'
 
 class Main extends Component {
     constructor(props) {
@@ -15,10 +16,10 @@ class Main extends Component {
     }
 
     clickToRegister = () => {
-            AxiosInstance.post("http://localhost:8080/auth/login", {
+        AxiosInstance.post("http://localhost:8080/auth/login", {
             email: this.state.email,
             password: this.state.password,
-         thCredentials: true   /* This is important, need to make a class for future requests */
+            thCredentials: true   /* This is important, need to make a class for future requests */
         }).then((response) => {
             console.log(response.data)
             this.setState({
@@ -27,12 +28,12 @@ class Main extends Component {
         })
         console.log(this.state.text + " (this should be changed)")
     }
-    
+
     clickToTest = () => {
-            AxiosInstance.get("http://localhost:8080/mindmap/test").then((response) => {
+        AxiosInstance.get("http://localhost:8080/mindmap/test").then((response) => {
             console.log(response.data)
             this.setState({
-           text: response.data
+                text: response.data
             })
         })
     }
@@ -40,10 +41,11 @@ class Main extends Component {
     render() {
         return (
             <div className="main">
-                <img src={logo} className="logo me-1" alt='logo' onClick={this.clickToRegister}/>
+                <img src={logo} className="logo me-1" alt='logo' onClick={this.clickToRegister} />
                 <div>{this.state.text}</div>
-            <button onClick={this.clickToRegister}>Login</button>
-            <button onClick={this.clickToTest}>Mind Map Test</button>
+                <Login />
+                {/* <button onClick={this.clickToRegister}>Login</button>
+                <button onClick={this.clickToTest}>Mind Map Test</button> */}
             </div>
         )
     }
