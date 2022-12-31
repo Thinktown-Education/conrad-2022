@@ -4,6 +4,14 @@ import './index.css';
 import Main from './pages/main/main';
 import reportWebVitals from './util/reportWebVitals';
 
+function Body() {
+  return (
+    <div>
+      <h1>HELLO THIS IS KARL.</h1>
+    </div>
+  )
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
