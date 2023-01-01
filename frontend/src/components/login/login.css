@@ -1,0 +1,46 @@
+.login-form-container {
+    padding: 20vh 20vw;
+}
+
+.login-fom {
+    width: 40vw;
+    height: 60vh;
+    display: block;
+}
+
+.login-info {
+    margin: 0.5rem 0.5rem;
+    width: 90%;
+}
+
+#remember-user {
+    width: unset;
+    margin-top: 1rem;
+}
+
+#signin {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#account-retrieval {
+    display: flex
+}
+
+#forgot-password {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: left
+}
+
+#register-account {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: right
+}
